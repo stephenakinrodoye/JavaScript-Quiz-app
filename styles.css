@@ -8,10 +8,14 @@
 }
 
 :root {
+  --ash: #b8b8b8;
   --orange: orange;
-  --aliceblue: rgb(138, 195, 245);
-  --red: rgb(197, 112, 112);
-  --green:   rgb(93, 173, 93);
+  --deepaliceblue: rgb(138, 195, 245);
+  --red: #a42834;
+  --lightRed: rgb(199, 124, 124);
+  --darkGreen: #02636a;
+  --green:   #23903c;
+  --lightgreen: #d4edda;
   --antiquewhite: rgb(156, 121, 76);
   --cornflowerblue: rgb(60, 104, 184);
 }
@@ -22,11 +26,14 @@ body {
 
 .start-btn,
 .info-box,
-.quiz-box {
+.quiz-box,
+.result-box {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2),
+              0px 4px 20px 0 rgba(0,0,0,0.19);
 }
 
 /* start Quiz button */
@@ -38,7 +45,7 @@ body {
   outline: none;
   border: none;
   border-radius: 5px;
-  background-color: var(--aliceblue);
+  background: white;
   cursor: pointer;
 }
 
@@ -46,6 +53,9 @@ body {
   display: none;
   width: 33.75rem;
   background-color: white;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
 }
 
 .info-box .info-title {
@@ -54,7 +64,7 @@ body {
   border-bottom: 1px solid var(--antiquewhite);
   display: flex;
   align-items: center;
-  padding: 0 2.19rem;
+  padding: 0 2rem;
   font-size: 20px;
   font-weight: 500;
 }
@@ -110,7 +120,7 @@ body {
 }
 
 .buttons button.quit:hover {
-  color: var(--aliceblue);
+  color: var(--deepaliceblue);
   background: var(--cornflowerblue);
 }
 
@@ -118,6 +128,9 @@ body {
   width: 34.38rem;
   background: white;
   border-radius: 5px;
+  /* opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9); */
 }
 
 .quiz-box header {
@@ -144,7 +157,7 @@ body {
   justify-content: space-between;
   width: 9rem;
   height: 3rem;
-  background-color: var(--aliceblue);
+  background-color: var(--deepaliceblue);
   border: 1px solid rgb(100, 175, 241);
   border-radius: 5px;
   padding: 0 8px;
@@ -182,7 +195,7 @@ body {
 
 .quiz-box section .option-list .option {
   background-color: aliceblue;
-  border: 1px solid var(--aliceblue);
+  border: 1px solid var(--deepaliceblue);
   border-radius: 5px;
   padding: 8px 15px;
   margin-bottom: 1rem;
@@ -191,10 +204,12 @@ body {
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  transition: all 0.3 ease;
 }
 
 section .option-list .option:hover {
-
+ background: var(--aliceblue);
+ border-color: #b8daff;
 }
 
 .option-list .option:last-child {
@@ -202,5 +217,121 @@ section .option-list .option:hover {
 }
 
 .option-list .option .icon {
+  height: 26px;
+  width: 26px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 15px;
+  line-height: 24px;
+  pointer-events: none;
+}
 
+.option-list .option .icon.tick {
+  color: #23903c;
+  border-color: #23903c;
+  background: #d4edda;
+}
+
+.option-list .option .icon.cross {
+  color: var(--red);
+  border-color: var(--red);
+  background: var(--lightRed);
+}
+
+.quiz-box footer {
+  height: 3.1rem;
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz-box footer .total-que span {
+  display: flex;
+  user-select: none;
+}
+
+footer .total-que span p {
+  font-weight: 500;
+  padding: 0 5px;
+}
+
+.total-que span p:first-child {
+  padding-left: 0px;
+}
+
+footer .next-btn {
+  height: 40px;
+  padding: 0 13px;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: var(--cornflowerblue);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+footer .next-btn:hover {
+  background: #02636a;
+}
+
+.result-box {
+  background: white;
+  width: 29rem;
+  padding: 25px 2rem;
+  border-radius: 5px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.result-box .icon {
+  font-size: 9rem;
+  color: var(--cornflowerblue);
+  margin-bottom: 10px;
+}
+
+.result-box .complete-test {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.result-box .score-test span {
+  display: flex;
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.score-test span p {
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.result-box .buttons {
+  display: flex;
+  margin: 20px 0;
+}
+
+.result-box .buttons button {
+  margin: 0 10px;
+  height: 40px;
+  padding: 0 20px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
