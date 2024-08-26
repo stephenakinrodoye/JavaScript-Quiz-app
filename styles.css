@@ -34,9 +34,12 @@ body {
   transform: translate(-50%, -50%);
   box-shadow: 0px 4px 8px 0 rgba(0,0,0,0.2),
               0px 4px 20px 0 rgba(0,0,0,0.19);
+  transition: all 0.3s ease;
 }
 
-.info-box.active-info {
+.info-box.activeInfo,
+.quiz-box.activeQuiz,
+.result-box.activeResult {
   display: block;
   z-index: 5;
   opacity: 1;
@@ -104,6 +107,7 @@ body {
   margin: 0 5px;
   height: 2rem;
   width: 6rem;
+  outline: none;
   border: 1px solid transparent;
   border-radius: 5px;
   color: white;
