@@ -12,7 +12,7 @@
   --orange: orange;
   --deepaliceblue: rgb(138, 195, 245);
   --red: #a42834;
-  --lightRed: rgb(199, 124, 124);
+  --lightRed: rgb(219, 190, 190);
   --darkGreen: #02636a;
   --green:   #23903c;
   --lightgreen: #d4edda;
@@ -36,6 +36,14 @@ body {
               0px 4px 20px 0 rgba(0,0,0,0.19);
 }
 
+.info-box.active-info {
+  display: block;
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 /* start Quiz button */
 .start-btn button {
   font-size: 25px;
@@ -50,7 +58,7 @@ body {
 }
 
 .info-box {
-  display: none;
+  /* display: none; */
   width: 33.75rem;
   background-color: white;
   opacity: 0;
@@ -128,9 +136,9 @@ body {
   width: 34.38rem;
   background: white;
   border-radius: 5px;
-  /* opacity: 0;
+  opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(0.9); */
+  transform: translate(-50%, -50%) scale(0.9);
 }
 
 .quiz-box header {
