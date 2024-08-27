@@ -363,3 +363,151 @@ footer .next-btn:hover {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+/* Media queries for small devices like smartphones */
+@media (max-width: 768px) {
+  body {
+    background-color: var(--deepaliceblue);
+  }
+
+  .start-btn button {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  .info-box, 
+  .quiz-box, 
+  .result-box {
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .info-box .info-title {
+    font-size: 18px;
+    padding: 0 1rem;
+  }
+
+  .info-box .info-list .info {
+    font-size: 15px;
+    margin: 3px 0;
+  }
+
+  .info-box .buttons {
+    padding: 0 1rem;
+    justify-content: center;
+  }
+
+  .info-box .buttons button {
+    height: 1.8rem;
+    width: 5rem;
+    font-size: 0.9rem;
+  }
+
+  .quiz-box header {
+    padding: 0 1rem;
+  }
+
+  .quiz-box header .title {
+    font-size: 18px;
+  }
+
+  .quiz-box header .timer {
+    width: 7rem;
+    height: 2.5rem;
+  }
+
+  .quiz-box header .timer .timer-sec {
+    font-size: 16px;
+    width: 2.5rem;
+    height: 1.8rem;
+    line-height: 28px;
+  }
+
+  .quiz-box section {
+    padding: 20px;
+  }
+
+  .quiz-box section .que-text {
+    font-size: 22px;
+  }
+
+  .quiz-box section .option-list .option {
+    padding: 6px 10px;
+    font-size: 15px;
+  }
+
+  .quiz-box footer {
+    padding: 0 20px;
+  }
+
+  .quiz-box footer .next-btn {
+    padding: 0 10px;
+    font-size: 16px;
+  }
+
+  .result-box {
+    padding: 20px;
+  }
+
+  .result-box .icon {
+    font-size: 7rem;
+  }
+
+  .result-box .complete-test {
+    font-size: 18px;
+  }
+
+  .result-box .score-test span {
+    font-size: 16px;
+  }
+
+  .result-box .buttons button {
+    padding: 0 15px;
+    font-size: 16px;
+    margin: 0 5px;
+  }
+}
+
+/* Media queries for extra small devices like smaller phones */
+@media (max-width: 480px) {
+  .info-box, 
+  .quiz-box, 
+  .result-box {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .quiz-box section .que-text {
+    font-size: 20px;
+  }
+
+  .quiz-box section .option-list .option {
+    font-size: 14px;
+    padding: 5px 8px;
+  }
+
+  .quiz-box header .title {
+    font-size: 16px;
+  }
+
+  .quiz-box header .timer .timer-sec {
+    font-size: 14px;
+    width: 2rem;
+    height: 1.5rem;
+  }
+
+  .result-box .complete-test {
+    font-size: 16px;
+  }
+
+  .result-box .score-test span {
+    font-size: 14px;
+  }
+
+  .result-box .buttons button {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+}
