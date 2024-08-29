@@ -170,7 +170,7 @@ body {
   width: 9rem;
   height: 3rem;
   background-color: var(--deepaliceblue);
-  border: 1px solid rgb(100, 175, 241);
+  border: none;
   border-radius: 5px;
   padding: 0 8px;
 }
@@ -184,14 +184,14 @@ body {
 .quiz-box header .timer .timer-sec {
   font-size: 18px;
   font-weight: 500;
-  background-color: grey;
+  background-color: rgb(36, 35, 35);
   height: 2rem;
   width: 3rem;
   color: white;
   text-align: center;
   line-height: 35px;
   border-radius: 5px;
-  border: 1px solid rgb(207, 200, 200);
+  border: none;
   user-select: none;
 }
 
@@ -254,7 +254,7 @@ section .option-list .option:hover {
 .option-list .option.correct {
   color: #23903c;
   border-color: #23903c;
-  background: #d4edda;
+  background: #85a38b;
 }
 
 .option-list .option.incorrect {
@@ -367,7 +367,7 @@ footer .next-btn:hover {
 /* Media queries for small devices like smartphones */
 @media (max-width: 768px) {
   body {
-    background-color: var(--deepaliceblue);
+    background-color: var(--cornflowerblue);
   }
 
   .start-btn button {
@@ -414,12 +414,19 @@ footer .next-btn:hover {
   }
 
   .quiz-box header .timer {
-    width: 7rem;
+    width: 9rem;
     height: 2.5rem;
   }
 
   .quiz-box header .timer .timer-sec {
-    font-size: 16px;
+    font-size: 15px;
+    width: 2.5rem;
+    height: 1.8rem;
+    line-height: 28px;
+  }
+
+  .quiz-box header .timer .timer-text {
+    font-size: 10px;
     width: 2.5rem;
     height: 1.8rem;
     line-height: 28px;
@@ -494,6 +501,12 @@ footer .next-btn:hover {
 
   .quiz-box header .timer .timer-sec {
     font-size: 14px;
+    width: 2rem;
+    height: 1.5rem;
+  }
+
+  .quiz-box header .timer .timer-sec {
+    font-size: 10px;
     width: 2rem;
     height: 1.5rem;
   }

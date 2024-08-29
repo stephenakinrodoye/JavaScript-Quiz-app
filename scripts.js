@@ -4,6 +4,7 @@ const infoBox = document.querySelector('.info-box');
 const exitBtn = infoBox.querySelector('.buttons .quit');
 const continueBtn = document.querySelector('.buttons .restart');
 const quizBox = document.querySelector('.quiz-box');
+const timeCount = quizBox.querySelector('.timer .timer-sec');
 
 const optionList = document.querySelector('.option-list');
 
@@ -25,6 +26,7 @@ continueBtn.addEventListener('click', () => {
 
   showQuestions(0);
   queCounter(1);
+  startTimer();
 });
 
 //get questions from array
@@ -33,6 +35,8 @@ const nextQue = document.querySelector('.next-btn');
 
 let index = 0;
 let queNumb = 1;
+let counter;
+let time = 15;
 
 function showQuestions(index) {
   const queText = document.querySelector('.que-text');
@@ -56,12 +60,12 @@ let tickIcon = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIcon = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 
+//evaluate user's answer
+let correctAns;
+
 function optionSelected(answer){
   let userAns = answer.textContent;
-  let correctAns = questions[index].answer;
-  let allOptions = optionList.children.length;
-  console.log(userAns);
-  console.log(correctAns);
+  correctAns = questions[index].answer;
 
   if (userAns === correctAns) {
     answer.classList.add('correct');
@@ -72,13 +76,8 @@ function optionSelected(answer){
     console.log('Answer is wrong');
     answer.insertAdjacentHTML('beforeend', crossIcon);
 
-    // if answer is incorrect automatically select the correct answer
-    for (let i = 0; i < allOptions; i++) {
-      if (optionList.children[i].textContent === correctAns) {
-        optionList.children[i].setAttribute('class', 'option correct');
-
-      }
-    }
+    //if answer is incorrect automatically select the correct answer
+    showCorrectAnswer();
   }
 
   //disable other options
@@ -86,6 +85,44 @@ function optionSelected(answer){
     optionList.children[i].classList.add('disabled');
   }
 }
+
+//if time runs out, show correct answer
+function showCorrectAnswer() {
+  let allOptions = optionList.children.length;
+  correctAns = questions[index].answer;
+  
+  for (let i = 0; i < allOptions; i++) {
+    if (optionList.children[i].textContent === correctAns) {
+      optionList.children[i].setAttribute('class', 'option correct');
+      optionList.children[i].insertAdjacentHTML('beforeend', tickIcon);
+    }
+  }
+}
+
+//start the timer
+function startTimer() {
+  time = 15;              //reset time for each new question
+
+  counter = setInterval(timer, 1000);
+  function timer () {
+    timeCount.textContent = time;
+    time--;
+
+    if (time < 0) {
+      clearInterval(counter);
+
+      // Check if an answer has already been selected
+      let anySelected = Array.from(optionList.children).some(option => option.classList.contains('correct') || option.classList.contains('incorrect'));
+      
+      // Only show the correct answer if none was selected
+      if (!anySelected) {
+        showCorrectAnswer();
+      }
+    }
+  }
+}
+
+
 
 const resultBox = document.querySelector('.result-box');
 
@@ -95,6 +132,8 @@ nextQue.addEventListener('click', () => {
     queNumb++;
     showQuestions(index);
     queCounter(queNumb);
+    clearInterval(counter);
+    startTimer(time);
   } else {
     quizBox.classList.remove('activeQuiz'); //close quiz box
     resultBox.classList.add('activeResult'); //display result box
